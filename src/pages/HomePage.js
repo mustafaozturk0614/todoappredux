@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TodoForm from "../components/TodoForm";
 import Table from "../components/Table";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Tab from "../components/Tab";
 import Panel from "../components/Panel";
 import TodoList from "../components/TodoList";
+import { fetchTodo } from "../store/features/TodoSlice";
 function HomePage() {
+  const dispatch = useDispatch();
+
   const isLoadingFirst = useSelector((state) => state.todo.isLoadingFirst);
   const { isLoading } = useSelector((state) => state.todo);
-
+  useEffect(() => {
+    dispatch(fetchTodo());
+  }, []);
   return (
     <>
       {isLoadingFirst ? (

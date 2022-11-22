@@ -1,6 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteTodo, editTodo } from "../store/features/TodoSlice";
+import {
+  deleteTodo,
+  editTodo,
+  changeActive,
+} from "../store/features/TodoSlice";
 function ButtonGroup({ todoId }) {
   const dispatch = useDispatch();
 
@@ -9,6 +13,7 @@ function ButtonGroup({ todoId }) {
   };
   const editMyTodo = () => {
     dispatch(editTodo(todoId));
+    dispatch(changeActive());
   };
 
   return (

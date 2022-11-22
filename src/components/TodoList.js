@@ -1,6 +1,8 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ButtonGroup from "./ButtonGroup";
+
+import { fetchTodo } from "../store/features/TodoSlice";
 import Table from "./Table";
 
 function TodoList() {
@@ -14,6 +16,7 @@ function TodoList() {
   );
 
   const todos = active === 0 ? completed : notCompleted;
+
   return (
     <div>
       <Table
